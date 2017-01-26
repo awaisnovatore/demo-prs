@@ -1,5 +1,7 @@
 class Product
   include Mongoid::Document
   field :name, type: String
-  field :price
+  field :category, type: String
+  field :description, type: String
+  field :price, type: Integer
 end

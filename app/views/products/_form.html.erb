@@ -16,8 +16,16 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
     <%= f.label :price %><br>
-    <%= f.number_field :price %>
+    <%= f.text_field :price %>
   </div>
   <div class="actions">
     <%= f.submit %>

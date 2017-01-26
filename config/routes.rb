@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :products
   root 'products#index'
   devise_for :users
   resources :products
@@ -56,6 +57,5 @@ Rails.application.routes.draw do
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  #     #   end
 end
