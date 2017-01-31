@@ -14,11 +14,49 @@
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
+<p>
+  <strong>Product Owner:</strong>
+  <%= @product.user.email %>
+</p>
 
 <p>
   <strong>Price:</strong>
   <%= @product.price %>
 </p>
+<h1>Review</h1>
+
+  <% @product.reviews.each do |review| %>
+  <p><strong>Title:</strong>
+  <%= review.title %>
+  </p>
+  <p><strong>Review:</strong>
+  <%= review.content %></p>
+  <p>
+  
+
+  
+  <% end %>
+
+  <h1>Add Review</h1>
+
+  <%= form_for([@product, @product.reviews.build]) do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+   
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+  
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
