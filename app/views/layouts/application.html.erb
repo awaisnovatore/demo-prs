@@ -1,29 +1,88 @@
 <!DOCTYPE html>
+
 <html>
 <head>
   <title>ProDemo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+
+   <style>
+  .jumbotron {
+      background-color: #f4511e;
+      background-image: url(http://www.desktopwallpaperhd.net/wallpapers/17/5/edition-moore-mouse-artist-mobile-wireless-series-product-paper-studio-supplier-products-hardware-wallpaper-176517.jpg);
+      background-repeat: no-repeat, repeat;
+      color: #fff;
+  }
+
+   .affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+  </style>
 </head>
 <body>
 
 
-<div>
-<% if user_signed_in? %>
-    Welcome <%=  current_user.email %>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to "Sign in", new_user_session_path%> or <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
-</div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Product Review System", products_path, class:'navbar-brand' %>
+      
+
+   </div>
+    <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+    <li>Welcome <%=  current_user.email %></li>
+    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign in", new_user_session_path%><span class="glyphicon glyphicon-user"></span></li>
+      <li> <%= link_to "Sign up", new_user_registration_path%><span class="glyphicon glyphicon-log-in"></span></li>
+      <% end %>
+    </ul>
+  </div>
+
+</nav>
+
+
+
+
+
+
+
+
+ 
+<div class="jumbotron text-center">
+
+	<h1>Know better, choose better.</h1> 
+	<p>We Respect Your Opinion</p>
+	<form class="form-inline">
+    <div class="input-group"  >
+    <%= text_field_tag :search, params[:search], placeholder: "Search Products", class:'form-control', size:'50' %>
+    <div class="input-group-btn">
+    <%= submit_tag "Search", :name => nil, class:'btn btn-danger' %>
+     </div>
+    </div>
+  </form>
+  </div>
+
+
+
+
 
 <%= form_tag(products_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Products" %>
-    <%= submit_tag "Search", :name => nil %>
+    
+    
 <% end %>
 
 <%= yield %>
+
+
 
 </body>
 </html>
